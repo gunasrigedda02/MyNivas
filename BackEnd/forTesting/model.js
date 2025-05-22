@@ -13,3 +13,4 @@ const demoTestSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("demoTest", demoTestSchema);
+"C:\Users\Anilk\OneDrive\Desktop\MongoDBCompass.lnk"
