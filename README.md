@@ -10,3 +10,5 @@ Commented index.css, App.css.
 
 installed the "bcrypt" to hash the passwords.
 installed the "jsonwebtoken" to tokenize the details.
+
+deleted unwanted node modules
