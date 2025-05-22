@@ -5,12 +5,11 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors());
-app.use(express.json());  // ✅ to parse JSON body
+app.use(express.json()); // ✅ Parse JSON body
 
 const mongoose_URL = process.env.BASE_URL;
 
-// Connect to MongoDB
-mongoose.connect(mongoose_URL)
+mongoose.connect(mongoose_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Successfully connected to MongoDB"))
     .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -19,6 +18,11 @@ app.get("/MyNivas", (req, res) => {
     res.send("hello world");
 });
 
+// Import and use your authentication routes
+const authRoutes = require("./MyNivas/userLogin/router"); // Adjust the path as needed
+app.use("/MyNivas", authRoutes);
+
+// Start the server
 app.listen(10000, () => {
-    console.log("Server running on port 8000");
+    console.log("Server running on port 10000"); // ✅ Corrected port log
 });
