@@ -14,3 +14,6 @@ installed the "jsonwebtoken" to tokenize the details.
 deleted unwanted node modules
 
 also installed nodemailer, I removed previous mongoDB connection string and added my personal mongoDB string please go through it
+
+
+narendra :  i added my component pg. hostels

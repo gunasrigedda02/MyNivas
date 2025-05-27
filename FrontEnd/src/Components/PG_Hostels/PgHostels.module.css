@@ -1,0 +1,155 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    
+
+}
+
+.wholecontainer{
+    height: 1000svh;
+    width: 100%;
+    background-color: white;
+}
+.first{
+    height: 200px;
+    width: 100%;
+    background-color: navy;
+    
+}
+/* .cards{
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 10px;
+    
+} */
+
+
+.cards {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;  
+   overflow-x: auto; 
+  justify-content: center; 
+  height: auto;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  scroll-behavior: none;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.search input{
+    
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    /* margin-top: 40px; */
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+}
+.search form{
+    width: 30%;
+    background-color: white;
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* padding: 10px; */
+    border-radius: 10px;
+    
+
+}
+.search form i{
+    padding-left: 10px;
+}
+.threebtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+    
+}
+.btns button{
+    height: 40px;
+    width: 80px;
+    border: 1px solid black; 
+    border-radius: 10px;
+    /* background-color:#4DB6AC; */
+     
+    
+}
+.btns button:hover{
+    background-color:  #00796B;
+}
+
+
+.card{
+    height: 380px;
+    width: 350px;
+    /* border: 1px solid black; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding: 15px;
+   margin-top: 10px;
+    
+    
+}
+.card img{
+    height: 180px;
+    width: 100%;
+    border-radius: 10px;
+
+}
+.content{
+    margin-left: 30px;
+    margin-top: 0px;
+}
+.content h3{
+    color: orangered;
+}
+.features{
+    display: flex;
+    gap: 50px;
+}
+.wifi{
+    display: flex;
+    gap: 10px;
+}
+.meals{
+    display: flex;
+    gap: 10px;
+}
+.laundry{
+    display: flex;
+    gap: 10px;
+}
+.more{
+    display: flex;
+    gap: 50px;
+    padding-top: 40px;
+}
+.viewmore button{
+    font-size: 20px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
