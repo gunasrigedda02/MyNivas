@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // ✅ Parse JSON body
+app.use(express.json());
 
 const mongoose_URL = process.env.BASE_URL;
 
@@ -19,10 +19,10 @@ app.get("/MyNivas", (req, res) => {
 });
 
 // Import and use your authentication routes
-const authRoutes = require("./MyNivas/userLogin/router"); // Adjust the path as needed
+const authRoutes = require("./MyNivas/userLogin/router");
 app.use("/MyNivas", authRoutes);
 
 // Start the server
 app.listen(10000, () => {
-    console.log("Server running on port 10000"); // ✅ Corrected port log
+    console.log("Server running on port 10000");
 });
