@@ -6,6 +6,7 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/hostelImages', express.static('public/hostelImages'));
 
 const mongoose_URL = process.env.BASE_URL;
 
@@ -20,7 +21,11 @@ app.get("/MyNivas", (req, res) => {
 
 // Import and use your authentication routes
 const authRoutes = require("./MyNivas/userLogin/router");
+const addHostelRouter = require("./MyNivas/hostelShowcase/forapproval/router");
+
+// Routers
 app.use("/MyNivas", authRoutes);
+app.use('/Hostels', addHostelRouter);
 
 // Start the server
 app.listen(10000, () => {

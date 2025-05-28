@@ -17,3 +17,7 @@ also installed nodemailer, I removed previous mongoDB connection string and adde
 
 
 narendra :  i added my component pg. hostels
+Anil:   I install the dependices in backend "uuid" for generating random id for every owner.
+        I successfully created a schema for to add the new hostels
+        Also with a specific id for every hostel using the "uuid" package
+        it allows only 4 images of hostel.
