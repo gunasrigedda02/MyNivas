@@ -5,75 +5,75 @@
 import React, { useState } from "react";
 import hostelstyles from "./PgHostels.module.css";
 
-function PG_Hostels() {
+function PgHostel() {
   const hostelData = [
     {
       name: "Feel Home Girls Hostel",
       price: 5500,
-      image: "./hostel1.jpg",
+      image: "./PgHostels/hostel1.jpg",
       features: ["WiFi", "Meals", "Laundry"],
       gender: "Girls",
     },
     {
       name: "Sunshine Boys Hostel",
       price: 5000,
-      image: "./hostel2.jpg",
+      image: "./PgHostels/hostel2.jpg",
       features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Sri Balaji Boys Hostel",
       price: 6000,
-      image: "./hostel3.jpg",
+      image: "./PgHostels/hostel3.jpg",
       features: ["WiFi", "Meals","Laundry"],
       gender: "Boys",
     },
     {
       name: "Sri Durga Boys Hostel",
       price: 5500,
-      image: "./hostel4.jpg",
+      image: "./PgHostels/hostel4.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Vidya Boys Hostel",
       price: 5500,
-      image: "./hostel5.jpg",
+      image: "./PgHostels/hostel5.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Vidya Girls Hostel",
       price: 5500,
-      image: "./hostel6.jpg",
+      image: "./PgHostels/hostel6.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Girls",
     },
     {
       name: "Krupa Boys Hostel",
       price: 5500,
-      image: "./hostel7.jpg",
+      image: "./PgHostels/hostel7.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Krupa Girls Hostel",
       price: 5500,
-      image: "./hostel8.jpg",
+      image: "./PgHostels/hostel8.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Girls",
     },
     {
       name: "Padmasri Boys Hostel",
       price: 5500,
-      image: "./hostel9.jpg",
+      image: "./PgHostels/hostel9.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Anantha Lakshmi Boys Hostel",
       price: 5500,
-      image: "./hostel10.jpg",
+      image: "./PgHostels/hostel10.jpg",
       features: ["WiFi","Meals", "Laundry"],
       gender: "Boys",
     },
@@ -142,7 +142,7 @@ function PG_Hostels() {
               <div className={hostelstyles.card} key={index}>
                 <img src={hostel.image} alt={hostel.name} />
                 <div className={hostelstyles.content}>
-                  <h2>{hostel.name}</h2>
+                  <h1>{hostel.name}</h1>
                   <h3>₹ {hostel.price}</h3>
                   <div className={hostelstyles.features}>
                     {hostel.features.includes("WiFi") && (
@@ -188,4 +188,4 @@ function PG_Hostels() {
   );
 }
 
-export default  PG_Hostels;
+export default PgHostel;
