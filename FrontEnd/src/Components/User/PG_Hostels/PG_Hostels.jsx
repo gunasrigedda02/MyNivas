@@ -1,92 +1,105 @@
-
-
-
-
 import React, { useState } from "react";
-import hostelstyles from "./PgHostels.module.css";
+import hostelstyles from "./PgHostel.module.css";
 
 function PgHostel() {
   const hostelData = [
     {
       name: "Feel Home Girls Hostel",
       price: 5500,
-      image: "./PgHostels/hostel1.jpg",
+      image: "./hostel2.jpg",
       features: ["WiFi", "Meals", "Laundry"],
       gender: "Girls",
+      description: "Feel at home with quality meals, laundry, and high-speed WiFi.",
     },
     {
       name: "Sunshine Boys Hostel",
       price: 5000,
-      image: "./PgHostels/hostel2.jpg",
+      image: "./hostel1.jpg",
       features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
+      description: "Bright and clean accommodation with meals and WiFi included.",
     },
     {
       name: "Sri Balaji Boys Hostel",
       price: 6000,
-      image: "./PgHostels/hostel3.jpg",
-      features: ["WiFi", "Meals","Laundry"],
+      image: "./hostel3.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Sri Durga Boys Hostel",
       price: 5500,
-      image: "./PgHostels/hostel4.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel4.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Vidya Boys Hostel",
       price: 5500,
-      image: "./PgHostels/hostel5.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel5.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Vidya Girls Hostel",
       price: 5500,
-      image: "./PgHostels/hostel6.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel6.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Girls",
     },
     {
       name: "Krupa Boys Hostel",
       price: 5500,
-      image: "./PgHostels/hostel7.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel7.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Krupa Girls Hostel",
       price: 5500,
-      image: "./PgHostels/hostel8.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel8.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Girls",
     },
     {
       name: "Padmasri Boys Hostel",
       price: 5500,
-      image: "./PgHostels/hostel9.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel9.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
     {
       name: "Anantha Lakshmi Boys Hostel",
       price: 5500,
-      image: "./PgHostels/hostel10.jpg",
-      features: ["WiFi","Meals", "Laundry"],
+      image: "./hostel10.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
       gender: "Boys",
     },
+    {
+      name: "Sri Venkateswara Girls Hostel",
+      price: 5500,
+      image: "./hostel11.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
+      gender: "Girls",
+    },
+    {
+      name: "Karthikeya Boys Hostel",
+      price: 5500,
+      image: "./hostel12.jpg",
+      features: ["WiFi", "Meals", "Laundry"],
+      gender: "Boys",
+    },
+    
   ];
 
   const [search, setSearch] = useState("");
   const [genderFilter, setGenderFilter] = useState("All");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedHostel, setSelectedHostel] = useState(null);
 
   const filteredHostels = hostelData.filter((hostel) => {
     const searchTerm = search.toLowerCase();
-    const matchesGender =
-      genderFilter === "All" || hostel.gender === genderFilter;
-
+    const matchesGender = genderFilter === "All" || hostel.gender === genderFilter;
     return (
       matchesGender &&
       (
@@ -98,6 +111,16 @@ function PgHostel() {
       )
     );
   });
+
+  const openModal = (hostel) => {
+    setSelectedHostel(hostel);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedHostel(null);
+    setModalOpen(false);
+  };
 
   return (
     <>
@@ -115,24 +138,15 @@ function PgHostel() {
             </form>
           </div>
           <div className={hostelstyles.threebtns}>
-            <div
-              className={hostelstyles.btns}
-              onClick={() => setGenderFilter("All")}
-            >
-              <button>All</button>
-            </div>
-            <div
-              className={hostelstyles.btns}
-              onClick={() => setGenderFilter("Boys")}
-            >
-              <button>BOYS</button>
-            </div>
-            <div
-              className={hostelstyles.btns}
-              onClick={() => setGenderFilter("Girls")}
-            >
-              <button>GIRLS</button>
-            </div>
+            {["All", "Boys", "Girls"].map((type) => (
+              <div
+                key={type}
+                className={hostelstyles.btns}
+                onClick={() => setGenderFilter(type)}
+              >
+                <button>{type.toUpperCase()}</button>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -142,24 +156,15 @@ function PgHostel() {
               <div className={hostelstyles.card} key={index}>
                 <img src={hostel.image} alt={hostel.name} />
                 <div className={hostelstyles.content}>
-                  <h1>{hostel.name}</h1>
+                  <h2>{hostel.name}</h2>
                   <h3>₹ {hostel.price}</h3>
                   <div className={hostelstyles.features}>
-                    {hostel.features.includes("WiFi") && (
-                      <div className={hostelstyles.wifi}>
-                        <i className="fa-solid fa-wifi"></i> WiFi
+                    {hostel.features.map((feature, i) => (
+                      <div key={i} className={hostelstyles.featureItem}>
+                        <i className={`fa-solid fa-${feature === "WiFi" ? "wifi" : feature === "Meals" ? "utensils" : "soap"}`}></i>
+                        {feature}
                       </div>
-                    )}
-                    {hostel.features.includes("Meals") && (
-                      <div className={hostelstyles.meals}>
-                        <i className="fa-solid fa-utensils"></i> Meals
-                      </div>
-                    )}
-                    {hostel.features.includes("Laundry") && (
-                      <div className={hostelstyles.meals}>
-                        <i className="fa-solid fa-soap"></i> Laundry
-                      </div>
-                    )}
+                    ))}
                   </div>
                   <div className={hostelstyles.more}>
                     <div>
@@ -171,19 +176,48 @@ function PgHostel() {
                       <i className="fa-regular fa-star"></i>
                     </div>
                     <div className={hostelstyles.viewmore}>
-                      <button>View More</button>
+                      <button onClick={() => openModal(hostel)}>View More</button>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-
-            {filteredHostels.length === 0 && (
-              <p>No hostels match your search.</p>
-            )}
+            {filteredHostels.length === 0 && <p>No hostels match your search.</p>}
           </div>
         </div>
       </div>
+
+     
+      {modalOpen && selectedHostel && (
+        <div className={hostelstyles.modal}>
+          <div className={hostelstyles.overlay} onClick={closeModal}></div>
+          <div className={hostelstyles.modalcontent}>
+            <h1 style={{color:"navy"}}>{selectedHostel.name}</h1>
+            <img className={hostelstyles.modalimage}
+              src={selectedHostel.image}
+              alt={selectedHostel.name}
+              
+            />
+            <p style={{ marginTop: "50px" }}><strong>description:</strong>{selectedHostel.description}</p>
+            <p><strong>Price:</strong> ₹ {selectedHostel.price}</p>
+            <p><strong>Gender:</strong> {selectedHostel.gender}</p>
+            <div className={hostelstyles.rooms}>
+              <p><strong>Rooms:</strong></p>
+              <div><img className={hostelstyles.smallimage}
+              src={selectedHostel.image}
+              alt={selectedHostel.name}/>
+              
+              
+            
+            </div>
+            </div>
+            <p><strong>Facilities:</strong> {selectedHostel.features.join(", ")}</p>
+            <button className={hostelstyles.close} onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
