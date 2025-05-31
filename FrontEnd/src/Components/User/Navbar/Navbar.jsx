@@ -12,7 +12,13 @@ function Navbar() {
             <li onClick={() => navigate("/")}>Home</li>
             <li onClick={() => navigate("/PG_Hostels")}>PG Hostels</li>
             <li onClick={() => navigate("/Contact_Us")}>Contact Us</li>
-            <li onClick={() => navigate("/Login")}>Login</li>
+            <li>
+              <div className={Styles.login}>Login</div>
+              <div className={Styles.login_options}>
+                <div>User</div>
+                <div>Admin</div>
+              </div>
+            </li>
         </ol>
     </div>
   )

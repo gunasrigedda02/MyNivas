@@ -25,7 +25,7 @@ const addHostelRouter = require("./MyNivas/hostelShowcase/forapproval/router");
 
 // Routers
 app.use("/MyNivas", authRoutes);
-app.use('/Hostels', addHostelRouter);
+app.use('/MyNivas', addHostelRouter);
 
 // Start the server
 app.listen(10000, () => {
