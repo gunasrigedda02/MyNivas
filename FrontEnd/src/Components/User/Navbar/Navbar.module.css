@@ -1,20 +1,23 @@
+/* Navbar.module.css */
 .main {
     display: flex;
     gap: 20px;
     list-style: none;
-    background-color: #49796B;
+    background-color: #49796B; /* Primary color for user pages, preserved */
     height: 50px;
     align-items: center;
     font-weight: bold;
     font-size: 20px;
+    position: relative;
 }
 
 li {
     cursor: pointer;
+    position: relative;
 }
 
 body {
-    background-color: #F0FFF0;
+    background-color: #F0FFF0; /* Background color, preserved */
     height: 100%;
     width: 100%;
 }
@@ -24,11 +27,28 @@ body {
 }
 
 .login_options {
-    display: none;
     position: absolute;
-    
+    top: 100%;
+    left: 0;
+    background-color: #49796B; /* Primary color, preserved */
+    padding: 10px;
+    list-style: none;
+    z-index: 10;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Ensure it's not interactive when hidden */
+    transition: opacity 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+    transition-delay: 0.1s; /* Add 0.1s delay */
+    border-radius: 0px 0px 10px 10px;
 }
 
 .login:hover .login_options {
-    display: block;
+    opacity: 1; /* Show on hover */
+    visibility: visible;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 10px 10px 0px lightgray; /* Preserved */
+}
+
+.login_options li {
+    padding: 5px 10px;
+    white-space: nowrap;
 }

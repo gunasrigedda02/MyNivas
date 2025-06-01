@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import hostelstyles from "./PgHostel.module.css";
+import hostelstyles from "./PgHostels.module.css";
 
 function PgHostel() {
   const hostelData = [

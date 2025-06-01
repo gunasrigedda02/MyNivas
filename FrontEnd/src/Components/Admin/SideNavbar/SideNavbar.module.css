@@ -1,20 +1,55 @@
-.main {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    background-color: #49796B;
-    height: 50px;
-    align-items: center;
-    font-weight: bold;
-    font-size: 20px;
+/* SideNavbar.module.css */
+.sidebar {
+    width: 200px;
+    background-color: #1e1e2f;
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
 }
 
-li {
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 12px 20px;
     cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-body {
-    background-color: #F0FFF0;
-    height: 100%;
-    width: 100%;
+.menu li:hover {
+    background-color: #333355;
+}
+
+.login {
+    position: relative; /* Required for absolute positioning of the submenu */
+}
+
+.loginOptions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #2a2a3d;
+    position: absolute;
+    left: 100%; /* Position the submenu to the right of the "Login" item */
+    top: 0;
+    width: 150px; /* Set a fixed width for the submenu */
+    display: none; /* Hide the submenu by default */
+}
+
+.login:hover .loginOptions {
+    display: block; /* Show the submenu on hover */
+}
+
+.loginOptions li {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.loginOptions li:hover {
+    background-color: #3b3b5a; /* Hover effect for submenu items */
 }
