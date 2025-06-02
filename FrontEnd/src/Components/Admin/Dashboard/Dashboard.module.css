@@ -1,0 +1,138 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F0FFF0 0%, #D8F0D8 100%);
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboardContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center center/cover;
+  opacity: 0.1;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  animation: bounceIn 0.6s ease-out forwards;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.statsCard {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .statsCard {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.statsTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.statsList {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.statsList li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.statsList li::before {
+  content: '•';
+  color: #49796B;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .statsCard {
+    padding: 15px;
+  }
+
+  .statsTitle {
+    font-size: 18px;
+  }
+
+  .statsList {
+    font-size: 14px;
+  }
+}
