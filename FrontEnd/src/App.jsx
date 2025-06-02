@@ -63,7 +63,7 @@ const AppContent = () => {
         <Routes>
           {/* User Routes */}
           <Route element={<UserLayout />}>
-            <Route index element={<RoleSelection />} />
+            <Route index element={<Home />} /> {/* Show Home at root */}
             <Route path="Home" element={<ProtectedRoute requiredRole="user"><Home /></ProtectedRoute>} />
             <Route path="PG_Hostels" element={<PG_Hostels />} />
             <Route path="Contact_Us" element={<Contact_Us />} />

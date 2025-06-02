@@ -1,4 +1,3 @@
-// SideNavbar.js
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styles from './SideNavbar.module.css';
@@ -8,10 +7,17 @@ const SideNavbar = () => {
   const navigate = useNavigate();
   const { logout, auth } = useContext(AuthContext);
 
+  // Debugging: Log the auth state
+  console.log('SideNavbar - Auth State:', auth);
+
   const handleLogout = () => {
-    logout(); // Clear auth state
-    navigate('/'); // Redirect to homepage
+    logout();
+    // Navigate to RoleSelection for admin logout
+    navigate('/RoleSelection');
   };
+
+  // Fallback: If the user is on the admin dashboard, assume they are authenticated
+  const isOnAdminDashboard = window.location.pathname === '/Dashboard';
 
   return (
     <div className={Styles.sidebar}>
@@ -22,7 +28,7 @@ const SideNavbar = () => {
         <li onClick={() => navigate('/Reviews')}>Reviews</li>
         <li onClick={() => navigate('/Users')}>Users</li>
 
-        {auth.isAuthenticated ? (
+        {(auth?.isAuthenticated || isOnAdminDashboard) ? (
           <li onClick={handleLogout}>Logout</li>
         ) : (
           <li className={Styles.login}>
