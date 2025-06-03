@@ -1,41 +1,64 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './Register.module.css';
 
 const Register = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [password, serPassword] = useState("");
-    const [name, setName] = useState("")
-    const [home, setHome] = useState("");
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-    const userEmail = (event) => {
-        setEmail(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username && password) {
+      // Handle registration logic (e.g., API call)
+      navigate('/RoleSelection');
+    } else {
+      setError('Please fill in all fields');
     }
+  };
 
-    const userPassword = (event) => {
-        serPassword(event.target.value);
-    }
-
-    const userName = (event) => {
-        setName(event.target.value)
-    }
-    const submitForm = () => {
-        navigate("/Login");
-    }
   return (
-    <div>
-        <form onSubmit={() => submitForm()}>
-            Full Name: <input type="text" required onChange={() => userName()}/>
-            Email: <input type="text" required onChange={() => userEmail()}/>
-            Password: <input type="password" required onChange={() => userPassword()}/>
-            <button onClick="submit">REGISTER</button>
-        </form>
-        <div>
-            Already a user <a onClick={() => navigate("/Login")}>Login</a>
+    <div className={styles.container}>
+      <div className={styles.navLinks}>
+        <span onClick={() => navigate('/')}>Home</span>
+        <span onClick={() => navigate('/Login/user')}>Login</span>
+      </div>
+      <h2>Register</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+          />
         </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+          />
+        </div>
+        <button type="submit" className={styles.submitButton}>
+          Register
+        </button>
+      </form>
+      <p>
+        Already have an account?{' '}
+        <span className={styles.link} onClick={() => navigate('/Login/user')}>
+          Login here
+        </span>
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default Register;

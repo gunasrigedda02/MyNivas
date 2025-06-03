@@ -1,17 +1,18 @@
+// components/user/Home/Home.jsx
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
-function Home() {
+const Home = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className={styles.homeContainer}>
-      <h2 className={styles.title}>Welcome to the Home Page</h2>
-      <p className={styles.description}>
-        This is the user homepage. Explore PG Hostels or contact us using the navigation bar above.
-      </p>
-      <Outlet />
+    <div className={styles.container}>
+      <h1>Welcome to PG Finder</h1>
+      <p>Find the best PG hostels for your needs!</p>
+      <button onClick={() => navigate('/RoleSelection')}>Get Started</button>
     </div>
   );
-}
+};
 
 export default Home;

@@ -1,14 +1,17 @@
-// main.jsx
+// src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import { AuthProvider } from './LoginCmpts/AuthContext/AuthContext';
+import { LoadingProvider } from './components/LoadingContext/LoadingContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
     <AuthProvider>
-      <App />
+      <LoadingProvider>
+        <App />
+      </LoadingProvider>
     </AuthProvider>
-  </React.StrictMode>
+  </BrowserRouter>
 );

@@ -1,14 +1,8 @@
-import React from 'react'
-import Styles from "./Header.module.css"
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import styles from './Header.module.css';
 
-function Header() {
-    const navigate = useNavigate();
-  return (
-    <div>
-        <div className={Styles.Header} onClick={() => navigate("/")}>Header</div>
-    </div>
-  )
-}
+const Header = () => {
+  return <div className={styles.header}>PG Finder</div>;
+};
 
 export default Header;

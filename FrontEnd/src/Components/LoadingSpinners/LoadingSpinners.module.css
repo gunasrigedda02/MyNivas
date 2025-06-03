@@ -1,3 +1,4 @@
+/* LoginCmpts/LoadingSpinner/LoadingSpinner.module.css */
 .spinnerContainer {
   position: fixed;
   top: 0;
@@ -7,6 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 1000; /* Ensure spinner is on top */
 }

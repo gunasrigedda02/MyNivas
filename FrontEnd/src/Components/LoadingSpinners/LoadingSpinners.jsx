@@ -1,3 +1,4 @@
+// src/components/LoadingSpinners/LoadingSpinner.jsx
 import React from 'react';
 import { MutatingDots } from 'react-loader-spinner';
 import styles from './LoadingSpinners.module.css';
@@ -13,8 +14,6 @@ const LoadingSpinner = () => {
         secondaryColor="#4fa94d"
         radius="12.5"
         ariaLabel="mutating-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
       />
     </div>
   );

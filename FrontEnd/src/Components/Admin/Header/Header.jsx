@@ -1,12 +1,8 @@
-// Header.js
 import React from 'react';
+import styles from './Header.module.css';
 
-const AdminHeader = () => {
-  return (
-    <header style={{ padding: '10px', background: '#f0f0f0', textAlign: 'center' }}>
-      <h1>Admin Panel</h1>
-    </header>
-  );
+const Header = () => {
+  return <div className={styles.header}>Admin Panel</div>;
 };
 
-export default AdminHeader;
+export default Header;

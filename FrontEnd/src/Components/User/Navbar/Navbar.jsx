@@ -1,52 +1,25 @@
+// components/user/Navbar/Navbar.jsx
 import React, { useContext } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Styles from './Navbar.module.css';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../LoginCmpts/AuthContext/AuthContext';
+import styles from './Navbar.module.css';
 
 function Navbar() {
   const navigate = useNavigate();
-  const { logout, auth } = useContext(AuthContext);
-  const location = useLocation();
+  const { logout } = useContext(AuthContext) || { logout: () => {} };
 
   const handleLogout = () => {
     logout();
-    navigate('/'); // Navigate to root, which now shows Home
+    navigate('/RoleSelection');
   };
-
-  // Navigate to appropriate "Home" based on role
-  const handleHomeNavigation = () => {
-    if (auth.isAuthenticated) {
-      if (auth.role === 'user') {
-        navigate('/Home'); // User homepage
-      } else if (auth.role === 'admin') {
-        navigate('/Dashboard'); // Admin dashboard
-      }
-    } else {
-      navigate('/'); // Public homepage (Home component)
-    }
-  };
-
-  const isHomePage = location.pathname === '/';
 
   return (
     <div>
-      <ol className={Styles.main}>
-        <li onClick={handleHomeNavigation}>Home</li>
+      <ol className={styles.main}>
+        <li onClick={() => navigate('/Home')}>Home</li>
         <li onClick={() => navigate('/PG_Hostels')}>PG Hostels</li>
         <li onClick={() => navigate('/Contact_Us')}>Contact Us</li>
-        {!isHomePage && (
-          auth.isAuthenticated ? (
-            <li onClick={handleLogout}>Logout</li>
-          ) : (
-            <li className={Styles.login}>
-              Login
-              <ol className={Styles.login_options}>
-                <li onClick={() => navigate('/Login/user')}>User</li>
-                <li onClick={() => navigate('/Login/admin')}>Admin</li>
-              </ol>
-            </li>
-          )
-        )}
+        <li onClick={handleLogout}>Logout</li>
       </ol>
     </div>
   );

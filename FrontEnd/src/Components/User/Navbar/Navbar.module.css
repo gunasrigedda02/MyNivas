@@ -1,76 +1,22 @@
-/* Navbar.module.css */
 .main {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    background: linear-gradient(90deg, #49796B 0%, #3A6155 100%); /* Gradient using primary color */
-    height: 60px; /* Slightly taller for a modern look */
-    align-items: center;
-    justify-content: center; /* Center the menu items */
-    font-weight: 600; /* Slightly lighter than bold for elegance */
-    font-size: 18px; /* Slightly smaller for balance */
-    font-family: 'Poppins', sans-serif; /* Modern font (ensure it's imported) */
-    color: #F0FFF0; /* Text color matches body background for contrast */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    position: relative;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  background-color: #007bff; /* Blue background for user navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main li {
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .main li:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle overlay on hover */
-    transform: scale(1.05); /* Slight scale-up effect */
-}
-
-.login {
-    position: relative;
-}
-
-.login_options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #49796B; /* Primary color, preserved */
-    padding: 8px 0; /* More balanced padding */
-    list-style: none;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; /* Added transform for scale effect */
-    transition-delay: 0.1s; /* Preserved 0.1s delay */
-    border-radius: 0px 0px 10px 10px;
-    box-shadow: 0px 10px 10px 0px lightgray; /* Preserved */
-    transform: scale(0.95); /* Start slightly scaled down */
-}
-
-.login:hover .login_options {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1); /* Scale to normal size on hover */
-}
-
-.login_options li {
-    padding: 8px 20px; /* More padding for better spacing */
-    white-space: nowrap;
-    color: #F0FFF0; /* Match text color with main menu */
-    font-size: 16px; /* Slightly smaller for hierarchy */
-    transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth hover effects */
-}
-
-.login_options li:hover {
-    background-color: #3A6155; /* Slightly darker shade of primary color for hover */
-    transform: translateX(5px); /* Slight shift to the right on hover */
-}
-
-/* Ensure the body style is applied correctly */
-body {
-    background-color: #F0FFF0; /* Preserved */
-    height: 100vh; /* Use viewport height for full coverage */
-    width: 100%;
-    margin: 0; /* Remove default margin */
-    font-family: 'Poppins', sans-serif; /* Consistent font */
+  background-color: #0056b3; /* Darker blue on hover */
+  border-radius: 5px;
 }

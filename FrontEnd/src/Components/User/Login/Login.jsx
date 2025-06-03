@@ -1,104 +1,105 @@
-// Login.js
-import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+// src/components/User/Login/Login.jsx
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../LoginCmpts/AuthContext/AuthContext';
-import Styles from './Login.module.css';
+import { useLoading } from '../../LoadingContext/LoadingContext';
+import LoadingSpinner from '../../LoadingSpinners/LoadingSpinners';
+import styles from './Login.module.css';
 
 const Login = () => {
-  const { role: currentRole, login } = useContext(AuthContext);
-  const { role } = useParams(); // 'user' or 'admin'
+  const { type } = useParams();
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [isEmailActive, setIsEmailActive] = useState(false);
-  const [isPasswordActive, setIsPasswordActive] = useState(false);
+  const location = useLocation();
 
-  // Redirect if already logged in
+  console.log('Login component rendered, type:', type); // Debug log
+
+  const authContext = useContext(AuthContext) || { login: () => {} };
+  const { login } = authContext;
+  const loadingContext = useLoading() || { isLoading: false, setIsLoading: () => {} };
+  const { isLoading, setIsLoading } = loadingContext;
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
   useEffect(() => {
-    if (currentRole) {
-      if (currentRole === 'admin') {
-        navigate('/Dashboard');
-      } else if (currentRole === 'user') {
-        navigate('/Home');
-      }
+    console.log('useEffect triggered, type:', type); // Debug log
+    if (!type || (type !== 'user' && type !== 'admin')) {
+      console.log('Invalid type, redirecting to /Login/user');
+      navigate('/Login/user', { replace: true });
     }
-  }, [currentRole, navigate]);
+  }, [type, navigate]);
 
-  const handleLogin = (e) => {
+  if (!type || (type !== 'user' && type !== 'admin')) {
+    console.log('Returning null due to invalid type:', type); // Debug log
+    return null;
+  }
+
+  const displayType = type.charAt(0).toUpperCase() + type.slice(1);
+  const { from } = location.state || { from: type === 'user' ? '/Home' : '/Dashboard' };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(role); // Save role in context + localStorage
-
-    // Redirect based on role
-    if (role === 'admin') {
-      navigate('/Dashboard');
+    if (username && password) {
+      setIsLoading(true);
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        login(type);
+        navigate(from, { replace: true });
+      } catch (err) {
+        setError('Login failed. Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
     } else {
-      navigate('/Home');
+      setError('Please enter both username and password');
     }
   };
 
   return (
-    <div className={Styles.loginContainer}>
-      <form onSubmit={handleLogin} className={Styles.loginForm}>
-        <h2 className={Styles.title}>
-          Login as {role.charAt(0).toUpperCase() + role.slice(1)}
-        </h2>
-        <div className={Styles.inputGroup}>
-          <div className={Styles.inputWrapper}>
-            <span
-              className={Styles.inputIcon}
-              aria-label="Email icon"
-              role="img"
-            ></span>
-            <input
-              type="email"
-              id="email"
-              value={credentials.email}
-              onChange={(e) => {
-                setCredentials({ ...credentials, email: e.target.value });
-                setIsEmailActive(e.target.value.length > 0);
-              }}
-              onFocus={() => setIsEmailActive(true)}
-              onBlur={() => setIsEmailActive(credentials.email.length > 0)}
-              required
-              className={Styles.input}
-            />
-            <label
-              htmlFor="email"
-              className={`${Styles.inputLabel} ${isEmailActive ? Styles.active : ''}`}
-            >
-              Email
-            </label>
-          </div>
+    <div className={styles.container}>
+      {isLoading && <LoadingSpinner />}
+      <div className={styles.navLinks}>
+        <span onClick={() => navigate('/')}>Home</span>
+        <span onClick={() => navigate(type === 'user' ? '/Login/admin' : '/Login/user')}>
+          {type === 'user' ? 'Admin Login' : 'User Login'}
+        </span>
+      </div>
+      <h2>{displayType} Login</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+            disabled={isLoading}
+          />
         </div>
-        <div className={Styles.inputGroup}>
-          <div className={Styles.inputWrapper}>
-            <span
-              className={`${Styles.inputIcon} ${Styles.passwordIcon}`}
-              aria-label="Password icon"
-              role="img"
-            ></span>
-            <input
-              type="password"
-              id="password"
-              value={credentials.password}
-              onChange={(e) => {
-                setCredentials({ ...credentials, password: e.target.value });
-                setIsPasswordActive(e.target.value.length > 0);
-              }}
-              onFocus={() => setIsPasswordActive(true)}
-              onBlur={() => setIsPasswordActive(credentials.password.length > 0)}
-              required
-              className={Styles.input}
-            />
-            <label
-              htmlFor="password"
-              className={`${Styles.inputLabel} ${isPasswordActive ? Styles.active : ''}`}
-            >
-              Password
-            </label>
-          </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            disabled={isLoading}
+          />
         </div>
-        <button type="submit" className={Styles.loginButton}>Login</button>
+        <button type="submit" className={styles.submitButton} disabled={isLoading}>
+          {isLoading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
+      <p>
+        Don’t have an account?{' '}
+        <span className={styles.link} onClick={() => navigate('/Register')}>
+          Register here
+        </span>
+      </p>
     </div>
   );
 };

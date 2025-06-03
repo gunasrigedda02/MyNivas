@@ -1,24 +1,18 @@
-// ProtectedRoute.js
+// Components/ProtectedRoute.jsx
 import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthContext';
 
-const ProtectedRoute = ({ children, requiredRole }) => {
-  const { auth } = useContext(AuthContext);
+const ProtectedRoute = ({ children, role }) => {
+  const { auth } = useContext(AuthContext) || { auth: { isAuthenticated: false, role: null } };
+  const location = useLocation();
 
-  // If auth is not available, redirect to RoleSelection
-  if (!auth) {
-    return <Navigate to="/RoleSelection" />;
-  }
-
-  // If not authenticated, redirect to RoleSelection
   if (!auth.isAuthenticated) {
-    return <Navigate to="/RoleSelection" />;
+    return <Navigate to="/Login/user" state={{ from: location.pathname }} replace />;
   }
 
-  // If the role doesn't match, redirect to homepage
-  if (auth.role !== requiredRole) {
-    return <Navigate to="/" />;
+  if (role && auth.role !== role) {
+    return <Navigate to={auth.role === 'user' ? '/Home' : '/Dashboard'} replace />;
   }
 
   return children;

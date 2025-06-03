@@ -1,96 +1,83 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { LoadingProvider, useLoading } from './Components/LoadingContext/LoadingContext';
-import LoadingSpinner from './Components/LoadingSpinners/LoadingSpinners';
-
-// User Components
-import Home from './Components/User/Home/Home';
-import Login from './Components/User/Login/Login';
-import Register from './Components/User/Register/Register';
-import Contact_Us from './Components/User/Contact_Us/Contact_Us';
-import PG_Hostels from './Components/User/PG_Hostels/PG_Hostels';
-
-// Admin Components
+// src/App.jsx
+import React, { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AuthContext } from './LoginCmpts/AuthContext/AuthContext';
+import Home from './components/user/Home/Home';
+import UserHome from './components/user/UserHome/UserHome';
 import Dashboard from './Components/Admin/Dashboard/Dashboard';
-import Hostels from './Components/Admin/Hostels/Hostels';
-import Ratings from './Components/Admin/Ratings/Ratings';
-import Reviews from './Components/Admin/Reviews/Reviews';
-import Users from './Components/Admin/Users/Users';
-
-// Auth & Utility Components
+import Hostels from './components/admin/Hostels/Hostels';
+import Ratings from './components/admin/Ratings/Ratings';
+import Reviews from './components/admin/Reviews/Reviews';
+import Users from './components/admin/Users/Users';
+import PGHostels from './components/user/PG_Hostels/PG_Hostels';
+import ContactUs from './components/user/Contact_Us/Contact_Us';
+import Login from './components/user/Login/Login';
+import Register from './components/user/Register/Register';
 import RoleSelection from './LoginCmpts/RoleSelection/RoleSelection';
-import ProtectedRoute from './LoginCmpts/ProtectedRoute/ProtectedRoute';
-
-// Layouts
 import UserLayout from './Layouts/UserLayout/UserLayout';
 import AdminLayout from './Layouts/AminLayout/AdminLayout';
+import MinimalLayout from './Layouts/MinimalLayout/MinimalLayout';
+import ProtectedRoute from './LoginCmpts/ProtectedRoute/ProtectedRoute';
 
-// Wrapper component to handle loading state during route changes
-const RouteChangeHandler = ({ children }) => {
-  const { setIsLoading } = useLoading();
-  const location = useLocation();
-
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, [location, setIsLoading]);
-
-  return children;
-};
-
-const App = () => {
-  return (
-    <LoadingProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </LoadingProvider>
-  );
-};
-
-const AppContent = () => {
-  const { isLoading } = useLoading();
+function App() {
+  const { auth } = useContext(AuthContext) || { auth: { isAuthenticated: false, role: null } };
 
   return (
-    <>
-      {isLoading && <LoadingSpinner />}
-      <RouteChangeHandler>
-        <Routes>
-          {/* User Routes */}
-          <Route element={<UserLayout />}>
-            <Route index element={<Home />} /> {/* Show Home at root */}
-            <Route path="Home" element={<ProtectedRoute requiredRole="user"><Home /></ProtectedRoute>} />
-            <Route path="PG_Hostels" element={<PG_Hostels />} />
-            <Route path="Contact_Us" element={<Contact_Us />} />
-            <Route path="Login/:role" element={<Login />} />
-            <Route path="Register" element={<Register />} />
-            <Route path="RoleSelection" element={<RoleSelection />} />
-          </Route>
+    <Routes>
+      {/* Public routes: MinimalLayout (Header only) */}
+      <Route element={<MinimalLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login/:type" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/RoleSelection" element={<RoleSelection />} />
+      </Route>
 
-          {/* Admin Routes */}
-          <Route
-            element={
-              <ProtectedRoute requiredRole="admin">
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="Dashboard" element={<Dashboard />} />
-            <Route path="Hostels" element={<Hostels />} />
-            <Route path="Ratings" element={<Ratings />} />
-            <Route path="Reviews" element={<Reviews />} />
-            <Route path="Users" element={<Users />} />
-          </Route>
-        </Routes>
-      </RouteChangeHandler>
-      <ToastContainer />
-    </>
+      {/* User routes: UserLayout (Header + Navbar) */}
+      <Route element={<UserLayout />}>
+        <Route
+          path="/Home"
+          element={
+            <ProtectedRoute role="user">
+              <UserHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/PG_Hostels"
+          element={
+            <ProtectedRoute role="user">
+              <PGHostels />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Contact_Us"
+          element={
+            <ProtectedRoute role="user">
+              <ContactUs />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
+
+      {/* Admin routes: AdminLayout (Header + SideNavbar) */}
+      <Route
+        element={
+          <ProtectedRoute role="admin">
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Hostels" element={<Hostels />} />
+        <Route path="/Ratings" element={<Ratings />} />
+        <Route path="/Reviews" element={<Reviews />} />
+        <Route path="/Users" element={<Users />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
-};
+}
 
 export default App;

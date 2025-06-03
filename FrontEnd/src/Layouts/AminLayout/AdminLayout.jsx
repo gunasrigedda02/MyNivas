@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'; // Import Outlet
 import Header from '../../Components/Admin/Header/Header';
 import SideNavbar from '../../Components/Admin/sideNavbar/SideNavbar';
 import styles from './AdminLayout.module.css';
