@@ -20,14 +20,6 @@ const reviewSchema = new mongoose.Schema({
     min: 1,
     max: 5
   },
-  ownerResponse: {
-    type: String,
-    trim: true
-  },
-  isVisible: {
-    type: Boolean,
-    default: true
-  }
 }, {
   timestamps: true,
   versionKey: false

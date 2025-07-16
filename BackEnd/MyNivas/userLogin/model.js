@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 const userSchema = new mongoose.Schema({
   userId: {
@@ -27,6 +27,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is required"],
     minlength: 8
+  },
+  resetPasswordOTP: {
+    type: String,
+    default: null
+  },
+  resetPasswordOTPExpires: {
+    type: Date,
+    default: null
+  },
+  isVerified: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true,
@@ -39,4 +51,5 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-module.exports = mongoose.model("User", userSchema);
+// Export with explicit collection name
+module.exports = (db) => db.model("User", userSchema, "users");
