@@ -1,0 +1,267 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.writeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 40px 20px;
+  gap: 2rem;
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+  box-sizing: border-box;
+  min-height: 400px;
+}
+
+.writeImageContainer,
+.writeFormContainer {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 300px;
+}
+
+.writeImage {
+  width: 70%;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.writeFormContainer {
+  background: none;
+  padding: 32px;
+  border-radius: 16px;
+  flex-direction: column;
+  display: flex;
+  margin-right: 40px;
+}
+
+.writeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  background: linear-gradient(120deg, #f7fbff 70%, #e0f7fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 119, 182, 0.13), 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.writeForm::before {
+  content: '';
+  position: absolute;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #b3e0fc55 60%, transparent 100%);
+  z-index: 0;
+}
+
+.writeTitle {
+  text-align: center;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: #0077b6;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #b3e0fc44;
+  position: relative;
+  z-index: 1;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.8rem 0.8rem;
+  border-radius: 12px;
+  border: 1.5px solid #b3e0fc;
+  background: linear-gradient(90deg, #fafdff 80%, #e0f7fa 100%);
+  font-size: 1.13rem;
+  color: #1a237e;
+  transition: border 0.3s, box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.06);
+  position: relative;
+  z-index: 1;
+}
+
+.formInput::placeholder {
+  color: #8bb3c7;
+  font-size: 1.05rem;
+  opacity: 1;
+  letter-spacing: 0.5px;
+}
+
+.formInput:focus {
+  border-color: #00b4d8;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.15);
+}
+
+.formInput[type='textarea'] {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+.submitButton {
+  width: fit-content;
+  padding: 0.75rem 1.5rem;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #0077b6 0%, #00cfff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 119, 182, 0.1), 0 1.5px 4px rgba(0, 0, 0, 0.07);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    letter-spacing 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #fff 0%, transparent 80%);
+  opacity: 0.25;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  z-index: 0;
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #00cfff 0%, #0077b6 100%);
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(0, 119, 182, 0.22), 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px) scale(1.07) rotate(-1deg);
+  letter-spacing: 2px;
+}
+
+.submitButton:hover::before {
+  width: 300%;
+  height: 300%;
+  opacity: 0.35;
+}
+
+.submitButton:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 119, 182, 0.1);
+}
+
+.animateOnScroll {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.inView {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.starRating {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #13294b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.stars {
+  display: flex;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin: 0 0.2rem;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.star:hover {
+  color: #0077b6;
+}
+
+.starRating label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: -20px;
+}
+
+@media (max-width: 1024px) {
+  .writeContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .writeImageContainer,
+  .writeFormContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .writeImage {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .writeImageContainer,
+  .writeFormContainer {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .writeContainer {
+    padding: 20px 10px;
+  }
+
+  .writeTitle {
+    font-size: 1.4rem;
+  }
+
+  .formInput {
+    font-size: 0.9rem;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+  }
+}

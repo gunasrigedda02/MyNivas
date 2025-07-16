@@ -1,0 +1,98 @@
+.sliderWrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.slick-slide > div {
+  display: flex !important;
+  justify-content: center;
+}
+
+.slideCard {
+  width: 300px;
+  height: 400px;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  transform: scale(0.9);
+  opacity: 0.7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.slideCard.active {
+  transform: scale(1);
+  opacity: 1;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid #009FD9;
+}
+
+.slick-dots {
+  margin-top: 30px;
+  display: flex !important;
+  justify-content: center;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  opacity: 0.5;
+  color: #142B6F;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #009FD9;
+}
+
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(20, 43, 111, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #142B6F;
+}
+
+.slick-prev {
+  margin-left: -30px;
+}
+
+.slick-next {
+  margin-right: -30px;
+}
+
+@media (max-width: 1024px) {
+  .slideCard {
+    width: 260px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slideCard {
+    width: 220px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slideCard {
+    width: 180px;
+    height: 260px;
+    border-radius: 12px;
+  }
+}

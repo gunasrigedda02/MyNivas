@@ -1,0 +1,203 @@
+.hmAbtContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+}
+
+.hmAbtContent1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-image: url('/graph.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hmAbtAu {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hmAbtAu::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: #F57C00;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.hmAbtPara {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+  margin: 15px 0;
+  width: 80%;
+  text-align: center;
+}
+
+.hmAbtContent2 {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hmAboutbg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hmAboutbg:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.button {
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #142B6F, #009FD9);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #1E3F8F, #00C6FF);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .icon {
+  transform: translateX(4px);
+}
+
+.animateOnScroll {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-animate="fade-slide-left"] {
+  transform: translateX(-50px);
+}
+
+[data-animate="fade-slide-left"].inView {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-animate="fade-slide-right"] {
+  transform: translateX(50px);
+}
+
+[data-animate="fade-slide-right"].inView {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .hmAbtAu {
+    font-size: 2.2rem;
+  }
+
+  .hmAbtPara {
+    font-size: 1.1rem;
+    width: 90%;
+  }
+
+  .button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+
+  .hmAboutbg {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hmAbtContainer {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .hmAbtContent1,
+  .hmAbtContent2 {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .hmAbtAu {
+    font-size: 2rem;
+  }
+
+  .hmAbtPara {
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .hmAboutbg {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hmAbtAu {
+    font-size: 1.6rem;
+  }
+
+  .hmAbtPara {
+    font-size: 0.95rem;
+  }
+
+  .button {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

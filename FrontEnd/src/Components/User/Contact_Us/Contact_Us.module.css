@@ -1,58 +1,262 @@
-.container {
-  max-width: 600px;
+/* Define CSS variables for consistent theming */
+:root {
+  --primary-color: #1e40af; /* Deep blue */
+  --accent-color: #10b981; /* Emerald green */
+  --error-color: #ef4444; /* Red for errors */
+  --background-color: #f0f9ff; /* Light blue background */
+  --card-background: rgba(255, 255, 255, 0.8); /* Glassmorphism */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* Page container with gradient background */
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--background-color), #ffffff);
+  padding: 2rem 1rem;
+}
+
+/* Main content centered with max width */
+.mainContent {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+}
+
+/* Grid layout for form and info sections */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* Headings span full width */
+.gridHeadings {
+  grid-column: span 12;
   text-align: center;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #333;
+.gridHeadings h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
-.form {
+.gridHeadings h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+/* Form container with glassmorphism effect */
+.formContainer {
+  grid-column: span 6;
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.formContainer h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Form group styling */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  color: #111827;
+  transition: var(--transition);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+}
+
+/* Submit button with gradient and hover effect */
+.submitButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  transform: translateY(-2px);
+}
+
+/* Info container for contact details */
+.infoContainer {
+  grid-column: span 6;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+/* Contact card with glassmorphism */
+.contactCard {
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
-label {
-  font-size: 1rem;
+.contactCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.contactCard p {
+  font-size: 0.875rem;
+  color: #4b5563;
   margin-bottom: 0.5rem;
-  color: #555;
 }
 
-input,
-textarea {
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
+.contactCard p strong {
+  color: #111827;
 }
 
-input:focus,
-textarea:focus {
-  border-color: #007bff;
+/* Social links container */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
 }
 
-.submitButton {
-  padding: 10px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+/* Social icons with brand-specific hover colors */
+.socialIcon {
+  font-size: 1.5rem;
+  color: #6b7280;
+  transition: var(--transition);
 }
 
-.submitButton:hover {
-  background-color: #0056b3;
+.socialLinks a:nth-child(1) .socialIcon:hover {
+  color: #25d366; /* WhatsApp green */
+}
+
+.socialLinks a:nth-child(2) .socialIcon:hover {
+  color: #1877f3; /* Facebook blue */
+}
+
+.socialLinks a:nth-child(3) .socialIcon:hover {
+  color: #e4405f; /* Instagram pink */
+}
+
+.socialLinks a:nth-child(4) .socialIcon:hover {
+  color: #1da1f2; /* Twitter/X blue */
+}
+
+/* Feedback messages with fade-in animation */
+.success,
+.error {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  animation: fadeIn 0.5s ease-in;
+}
+
+.success {
+  color: var(--accent-color);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.error {
+  color: var(--error-color);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Fade-in animation for feedback */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .formContainer,
+  .infoContainer {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .gridHeadings h1 {
+    font-size: 2rem;
+  }
+
+  .gridHeadings h3 {
+    font-size: 1rem;
+  }
+
+  .formContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .formContainer,
+  .infoContainer {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 1rem;
+  }
+
+  .formInput,
+  .submitButton {
+    font-size: 0.875rem;
+  }
+
+  .contactCard h3 {
+    font-size: 1rem;
+  }
+
+  .contactCard p {
+    font-size: 0.75rem;
+  }
+
+  .socialIcon {
+    font-size: 1.25rem;
+  }
 }

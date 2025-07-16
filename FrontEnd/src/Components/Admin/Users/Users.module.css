@@ -1,0 +1,202 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.refreshButton {
+  padding: 8px 16px;
+  background-color: #3182ce;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.refreshButton:hover {
+  background-color: #2b6cb0;
+}
+
+.tableWrapper {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  background-color: #f8fafc;
+}
+
+.tableHeader {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tableHeader:hover {
+  background-color: #edf2f7;
+}
+
+.sortIcon {
+  margin-left: 8px;
+  font-size: 0.875rem;
+}
+
+.tableBody {
+  border-top: 1px solid #e2e8f0;
+}
+
+.tableRow:hover {
+  background-color: #f7fafc;
+}
+
+.tableCell {
+  padding: 16px;
+  font-size: 0.875rem;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+.tableCell:nth-child(1) {
+  color: #718096;
+}
+
+.tableCell:nth-child(2) {
+  font-weight: 500;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+}
+
+.verifiedYes {
+  background-color: #c6f6d5;
+  color: #22543d;
+}
+
+.verifiedNo {
+  background-color: #fed7d7;
+  color: #9b2c2c;
+}
+
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationNav {
+  display: inline-flex;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.paginationButton {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.paginationButton:hover {
+  background-color: #edf2f7;
+}
+
+.paginationButton:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.paginationButton:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.paginationButtonActive {
+  background-color: #3182ce;
+  color: #ffffff;
+  border-color: #3182ce;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.25rem;
+  color: #4a5568;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error {
+  font-size: 1.25rem;
+  color: #c53030;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.loginButton {
+  padding: 10px 20px;
+  background-color: #3182ce;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+  background-color: #2b6cb0;
+}

@@ -1,11 +1,10 @@
-/* src/components/User/Login/Login.module.css */
 .container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .navLinks {
@@ -16,50 +15,133 @@
 
 .navLinks span {
   cursor: pointer;
-  color: #007bff;
+  color: #009FD9;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navLinks span:hover {
+  color: #00C6FF;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #142B6F;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  width: 40px;
+  height: 3px;
+  background-color: #F57C00;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 .error {
-  color: red;
-  margin-bottom: 10px;
+  color: #dc3545;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .formGroup label {
-  margin-bottom: 5px;
-  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .formGroup input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formGroup input::placeholder {
+  color: #999;
+}
+
+.formGroup input:focus {
+  border-color: #009FD9;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 159, 217, 0.1);
 }
 
 .submitButton {
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background: linear-gradient(90deg, #142B6F, #009FD9);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #1E3F8F, #00C6FF);
+  transform: translateY(-2px);
 }
 
 .submitButton:disabled {
-  background-color: #ccc;
+  background: #cccccc;
   cursor: not-allowed;
+  transform: none;
 }
 
 .link {
-  color: #007bff;
+  color: #009FD9;
   cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
+
+.link:hover {
+  color: #00C6FF;
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 40px auto;
+    padding: 30px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .formGroup input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .submitButton {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }

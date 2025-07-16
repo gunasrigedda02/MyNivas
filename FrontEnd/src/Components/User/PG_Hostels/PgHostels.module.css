@@ -1,206 +1,349 @@
-
-body{
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-   
-    
-
+.wholecontainer {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
 }
 
-.wholecontainer{
-    height: 1000svh;
-    width: 100%;
-    background-color: white;
-}
-.first{
-    height: 200px;
-    width: 100%;
-    background-color: navy;
-    
+.first {
+  width: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #142B6F, #1E3F8F);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
+.search form {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
+.search form i {
+  color: #142B6F;
+  font-size: 1.2rem;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.search input::placeholder {
+  color: #999;
+}
+
+.threebtns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btns button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 2px solid #142B6F;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #142B6F;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btns button:hover {
+  background-color: #F57C00;
+  border-color: #F57C00;
+  color: #ffffff;
+}
+
+.second {
+  padding: 40px 20px;
+}
 
 .cards {
   display: flex;
-  gap: 80px;
-  flex-wrap: wrap;  
-   overflow-x: auto; 
-  justify-content: center; 
-  height: auto;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.card {
+  width: 350px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-top: 10px;
-  padding-bottom: 10px;
-  scroll-behavior: none;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.search{
-    display: flex;
-    justify-content: center;
-    
-    
+.content {
+  padding: 20px;
 }
 
-.search input{
-    
-    border-radius: 10px;
-    font-size: 20px;
-    padding: 10px;
-    /* margin-top: 40px; */
-    border: none;
-    outline: none;
-    font-size: 16px;
-    width: 100%;
-}
-.search form{
-    width: 30%;
-    background-color: white;
-    margin-top: 40px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    /* padding: 10px; */
-    border-radius: 10px;
-    
-
-}
-.search form i{
-    padding-left: 10px;
-}
-.threebtns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
-    
-}
-.btns button{
-    height: 40px;
-    width: 80px;
-    border: 1px solid black; 
-    border-radius: 10px;
-    /* background-color:#4DB6AC; */
-    background-color: white;
-     
-    
-}
-.btns button:hover{
-    background-color:  #FFA500;
+.content h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #142B6F;
+  margin-bottom: 8px;
 }
 
-
-.card{
-    height: 380px;
-    width: 350px;
-    /* border: 1px solid black; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
-    padding: 15px;
-   margin-top: 10px;
-    
-    
-}
-.card img{
-    height: 180px;
-    width: 100%;
-    border-radius: 10px;
-
-}
-.content{
-    margin-left: 30px;
-    margin-top: 0px;
-}
-.content h3{
-    color: orangered;
-}
-.features{
-    display: flex;
-    gap: 50px;
-}
-.wifi{
-    display: flex;
-    gap: 10px;
-}
-.meals{
-    display: flex;
-    gap: 10px;
-}
-.laundry{
-    display: flex;
-    gap: 10px;
-}
-.more{
-    display: flex;
-    gap: 50px;
-    padding-top: 40px;
-}
-.viewmore button{
-    font-size: 20px;
-    background-color: navy;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
+.content h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #F57C00;
+  margin-bottom: 12px;
 }
 
-
-
-
-.modal,.overlay{
-    width: 100vw;
-    height: 100vh;
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
+.features {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.overlay{
-    background-color: rgba(49 ,49, 49,0.8);
-    
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #555;
 }
-.modalcontent{
-    height: 620px;
-    width: 900px;
-    /* border: 2px solid black; */
-    background-color: white;
+
+.featureItem i {
+  color: #009FD9;
+}
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #555;
+}
+
+.more i {
+  color: #F57C00;
+}
+
+.viewmore button {
+  padding: 8px 16px;
+  background: linear-gradient(90deg, #142B6F, #009FD9);
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.viewmore button:hover {
+  background: linear-gradient(90deg, #1E3F8F, #00C6FF);
+  transform: translateY(-2px);
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modalcontent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modalcontent h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #142B6F;
+  margin-bottom: 20px;
+}
+
+.modalimage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.modalcontent p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.modalcontent p strong {
+  color: #142B6F;
+}
+
+.rooms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.rooms p {
+  font-size: 1rem;
+  color: #142B6F;
+  font-weight: 500;
+}
+
+.smallimage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.close {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #142B6F, #009FD9);
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover {
+  background: linear-gradient(90deg, #1E3F8F, #00C6FF);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 300px;
+  }
+
+  .modalcontent {
+    width: 85%;
     padding: 20px;
-    position: absolute;
- box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
-    top: 50px;
-    left: 300px;
-    /* right: 100px; */
-   
-    border-radius: 10px;
-}
-.modalimage{
-    width: 100%;
+  }
+
+  .modalimage {
     height: 250px;
-    object-fit: contain;
-    border-radius: 10px;
+  }
 }
 
-.smallimage{
-    height: 50px;
-    width: 50px;
-    /* border: 1px solid black; */
-    border-radius: 10px;
-}
-.rooms{
-    display: flex;
-    gap: 10px;
-}
-.rooms img{
-    /* display: flex; */
-    gap: 10px;
+@media (max-width: 768px) {
+  .first {
+    padding: 30px 15px;
+  }
 
+  .search form {
+    max-width: 400px;
+  }
+
+  .threebtns {
+    gap: 10px;
+  }
+
+  .btns button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .modalcontent {
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modalimage {
+    height: 200px;
+  }
 }
-.close{
-    font-size: 20px;
-    color: white;
-    background-color: navy;
+
+@media (max-width: 480px) {
+  .search form {
+    max-width: 100%;
+  }
+
+  .btns button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .content h2 {
+    font-size: 1.2rem;
+  }
+
+  .content h3 {
+    font-size: 1.1rem;
+  }
+
+  .modalcontent h1 {
+    font-size: 1.4rem;
+  }
+
+  .modalcontent p {
+    font-size: 0.9rem;
+  }
+
+  .modalimage {
+    height: 180px;
+  }
 }

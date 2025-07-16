@@ -3,19 +3,19 @@ import { Outlet } from 'react-router-dom';
 import Header from '../../components/User/Header/Header';
 import Navbar from '../../components/User/Navbar/Navbar';
 import Footer from '../../Components/User/Footer/Footer';
-import styles from './UserLayout.module.css';
+import styles from './PublicHomeLayout.module.css';
 
-const UserLayout = () => {
+const PublicHomeLayout = () => {
   return (
     <div className={styles.container}>
       <Header />
       <Navbar />
-      <div className={styles.content}>
+      <main className={styles.content}>
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );
 };
 
-export default UserLayout;
+export default PublicHomeLayout;

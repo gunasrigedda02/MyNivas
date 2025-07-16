@@ -1,44 +1,51 @@
-// src/App.jsx
 import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from './LoginCmpts/AuthContext/AuthContext';
-import Home from './components/user/Home/Home';
-import UserHome from './components/user/UserHome/UserHome';
-import Dashboard from './Components/Admin/Dashboard/Dashboard';
-import Hostels from './components/admin/Hostels/Hostels';
-import Ratings from './components/admin/Ratings/Ratings';
-import Reviews from './components/admin/Reviews/Reviews';
-import Users from './components/admin/Users/Users';
-import PGHostels from './components/user/PG_Hostels/PG_Hostels';
-import ContactUs from './components/user/Contact_Us/Contact_Us';
-import Login from './components/user/Login/Login';
-import Register from './components/user/Register/Register';
+import Home from './Components/User/Home/Home';
+import HomeData from './Components/User/HomeData/HomeData';
+import Dashboard from './components/Admin/Dashboard/Dashboard';
+import Hostels from './Components/Admin/Hostels/Hostels';
+import Ratings from './components/Admin/Ratings/Ratings';
+import Reviews from './components/Admin/Reviews/Reviews';
+import Users from './Components/Admin/Users/Users';
+import PGHostels from './components/User/PG_Hostels/PG_Hostels';
+import ContactUs from './Components/User/Contact_Us/Contact_Us';
+import Login from './components/User/Login/Login';
+import Register from './components/User/Register/Register';
 import RoleSelection from './LoginCmpts/RoleSelection/RoleSelection';
 import UserLayout from './Layouts/UserLayout/UserLayout';
-import AdminLayout from './Layouts/AminLayout/AdminLayout';
+import AdminLayout from './Layouts/AminLayout/AdminLayout'; // Typo: 'AminLayout' should be 'AdminLayout'
 import MinimalLayout from './Layouts/MinimalLayout/MinimalLayout';
+import PublicHomeLayout from './Layouts/PublicLayout/PublicHomeLayout';
 import ProtectedRoute from './LoginCmpts/ProtectedRoute/ProtectedRoute';
+import About from './Components/User/About/About';
 
 function App() {
   const { auth } = useContext(AuthContext) || { auth: { isAuthenticated: false, role: null } };
 
   return (
     <Routes>
-      {/* Public routes: MinimalLayout (Header only) */}
+      {/* Public home route: PublicHomeLayout (Header + Navbar) */}
+      <Route element={<PublicHomeLayout />}>
+        <Route path="/" element={<Home />}>
+          <Route index element={<HomeData />} /> {/* Nested route to render HomeData */}
+        </Route>
+      </Route>
+
+      {/* Other public routes: MinimalLayout (Header only) */}
       <Route element={<MinimalLayout />}>
-        <Route path="/" element={<Home />} />
         <Route path="/Login/:type" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/RoleSelection" element={<RoleSelection />} />
       </Route>
 
-      {/* User routes: UserLayout (Header + Navbar) */}
+      {/* User routes: UserLayout (Header + Navbar + Footer) */}
       <Route element={<UserLayout />}>
         <Route
           path="/Home"
           element={
             <ProtectedRoute role="user">
-              <UserHome />
+              <HomeData />
             </ProtectedRoute>
           }
         />
@@ -55,6 +62,14 @@ function App() {
           element={
             <ProtectedRoute role="user">
               <ContactUs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/About"
+          element={
+            <ProtectedRoute role="user">
+              <About />
             </ProtectedRoute>
           }
         />

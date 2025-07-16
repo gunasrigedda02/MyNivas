@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f0f4f8; /* Light background for public pages */
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
 }
 
 .content {
   flex: 1;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
 }

@@ -1,0 +1,150 @@
+.faq {
+  width: 100%;
+  min-height: 70vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #142B6F;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.h2::after {
+  content: '';
+  width: 50px;
+  height: 4px;
+  background-color: #F57C00;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.faqItem {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faqItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faqQuestion {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #142B6F;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+}
+
+.faqQuestion::before {
+  content: '\25B6'; /* Right arrow */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F57C00;
+  transition: transform 0.3s ease;
+}
+
+.faqQuestion.open::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.faqAnswer {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #555;
+  padding-left: 30px;
+  border-left: 3px solid #009FD9;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animateOnScroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.inView {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .h2 {
+    font-size: 1.8rem;
+  }
+
+  .faqItem {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .faqQuestion {
+    font-size: 1rem;
+  }
+
+  .faqAnswer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .h2 {
+    font-size: 1.6rem;
+  }
+
+  .faqItem {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .faqQuestion {
+    font-size: 0.95rem;
+  }
+
+  .faqAnswer {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .h2 {
+    font-size: 1.4rem;
+  }
+
+  .faqQuestion {
+    font-size: 0.9rem;
+  }
+
+  .faqAnswer {
+    font-size: 0.8rem;
+  }
+}
