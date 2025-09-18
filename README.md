@@ -62,7 +62,7 @@ Ensure a stable internet connection for dependency installation.
 
 
 Clone the Repository:
-git clone git@github.com:gunasrigedda02/MyNivas.git
+git clone [git@github.com:gunasrigedda02/MyNivas.git](https://github.com/gunasrigedda02/MyNivas.git)
 cd mynivas
 
 Note: Replace gunasrigedda with your actual GitHub username or repository URL when the project is hosted.
