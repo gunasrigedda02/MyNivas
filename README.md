@@ -65,7 +65,7 @@ Clone the Repository:
 git clone https://github.com/anilkumarpolipalli/mynivas.git
 cd mynivas
 
-Note: Replace anilkumarpolipalli with your actual GitHub username or repository URL when the project is hosted.
+Note: Replace gunasrigedda with your actual GitHub username or repository URL when the project is hosted.
 
 Install Dependencies:
 npm install
@@ -137,8 +137,8 @@ This project is licensed under the MIT License. See the LICENSE.md file (create 
 Contact
 For questions, feedback, or support, contact the project maintainer:
 
-Name: Anil Kumar Polipalli
-Email: anilkumarpolipalli24@gmail.com
-GitHub: anilkumarpolipalli24
+Name: Gunasri Gedda
+Email: gunasrigedda02@gmail.com
+GitHub: gunasrigedda02
 
 Thank you for exploring MyNivas. We are committed to developing a robust platform to meet the needs of property managers and tenants.
