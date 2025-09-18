@@ -138,7 +138,7 @@ Contact
 For questions, feedback, or support, contact the project maintainer:
 
 Name: Gunasri Gedda
-Email: gunasrigedda02@gmail.com
+Email: gunasrigedda29@gmail.com
 GitHub: gunasrigedda02
 
 Thank you for exploring MyNivas. We are committed to developing a robust platform to meet the needs of property managers and tenants.
